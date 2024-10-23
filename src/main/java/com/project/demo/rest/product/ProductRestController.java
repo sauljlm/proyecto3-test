@@ -59,7 +59,7 @@ public class ProductRestController {
         if(foundCategory.isPresent()) {
 
             Pageable pageable = PageRequest.of(page-1, size);
-            Page<Product> productsPage = ProductRepository.getProductByUserId(categoryId, pageable);
+            Page<Product> productsPage = ProductRepository.getProductByCategoryId(categoryId, pageable);
             Meta meta = new Meta(request.getMethod(), request.getRequestURL().toString());
             meta.setTotalPages(productsPage.getTotalPages());
             meta.setTotalElements(productsPage.getTotalElements());
