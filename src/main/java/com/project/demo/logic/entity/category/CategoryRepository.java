@@ -1,12 +1,13 @@
 package com.project.demo.logic.entity.category;
 
 import com.project.demo.logic.entity.rol.RoleEnum;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-@Repository
-public interface CategoryRepository extends CrudRepository<Category, Long> {
+
+public interface CategoryRepository extends JpaRepository<Category, Long> {
     Optional<Category> findByName(RoleEnum name);
 }

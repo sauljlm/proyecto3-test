@@ -1,6 +1,9 @@
 package com.project.demo.logic.entity.category;
 
+import com.project.demo.logic.entity.product.Product;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Table(name = "category")
 @Entity
@@ -10,6 +13,8 @@ public class Category {
     private Long id;
     private String name;
     private String description;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Product> products;
 
     public Long getId() {
         return id;
@@ -33,5 +38,13 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
